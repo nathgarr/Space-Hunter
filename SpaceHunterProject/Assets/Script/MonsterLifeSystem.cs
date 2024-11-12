@@ -3,15 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class MonsterLifeSystem : MonoBehaviour
+public class MonsterLifeSystem : MonoBehaviour , IMonster
 {
     [SerializeField]
     TextMeshProUGUI m_TextMeshPro;
+    public GameObject MonsterHead;
     public float monsterKilled;
     public int monsterMaxLife = 1;
     public int monsterCurrentLife;
     public float monsterValue=1;
 
+    public bool IsMonster {  get { return true; } }
     public void Start()
     {
         MonsterLife();
@@ -19,19 +21,18 @@ public class MonsterLifeSystem : MonoBehaviour
     public void MonsterLife()
     {
         monsterCurrentLife = monsterMaxLife;
-
     }
-    private void OnTriggerEnter(Collider other)
+    public void OnCollide(GameObject player)
     {
-        monsterKilled++;
         monsterCurrentLife--;
         if (monsterCurrentLife < monsterMaxLife)
         {
             Destroy(gameObject);
         }
-        AddMonsterKill(monsterValue);
+        AddMonsterKill();
     }
-    public void AddMonsterKill(float monsterValue)
+
+    public void AddMonsterKill()
     {
         monsterKilled += monsterValue;
         m_TextMeshPro.text = " Monster Killed : "  + monsterKilled.ToString();
