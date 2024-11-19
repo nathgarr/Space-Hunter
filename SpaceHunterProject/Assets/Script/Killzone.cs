@@ -15,7 +15,10 @@ public class Killzone : MonoBehaviour
     }
     public void OnTriggerEnter(Collider other)
     {
-        CheckpointManager.RespawnFromLastCheckpoint(other.transform.root.gameObject);
-        Debug.Log(other);
+        if (other.CompareTag("Player"))
+        {
+            CheckpointManager.RespawnFromLastCheckpoint(other.transform.root.gameObject);
+            Debug.Log(other);
+        }
     }
 }

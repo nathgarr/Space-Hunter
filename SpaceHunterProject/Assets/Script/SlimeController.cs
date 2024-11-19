@@ -17,7 +17,6 @@ public class SlimeController : MonoBehaviour
     public float slimeBallSpeed = 4;
 
     public float fireRate = 1f;
-    private float nextFire = 0.0f;
 
     public LayerMask playerMask;
 
