@@ -13,7 +13,8 @@ public class Chrono : MonoBehaviour
     public static Chrono Instance;
     [SerializeField] TextMeshProUGUI timerTexte;
     public float remainingTime = 60;
-    public float maxTime =45;
+    public float maxTime = 45;
+    public float elapsedTime { get { return maxTime - remainingTime; } }
     public delegate void OnChronoOver();
     public OnChronoOver onChronoOverDel;
     public void Awake()
@@ -39,7 +40,7 @@ public class Chrono : MonoBehaviour
     public void ChronoWork()
     {
         remainingTime-= Time.deltaTime;
-        timerTexte.text = remainingTime.ToString() + " S";
+        timerTexte.text = SecondsToMinSec(remainingTime);
         gaugeValue.fillAmount = timeRate;
     }
 
@@ -66,5 +67,16 @@ public class Chrono : MonoBehaviour
         {
             remainingTime = maxTime;
         }
+    }
+    public static string SecondsToMinSec(float _secf)
+    {
+        int _sec = (int) _secf;
+        int _min = (_sec / 60);
+
+        int _secLeft = _sec - (_min * 60);
+        string _secLeftStr = (_secLeft < 10) ? "0" + _secLeft.ToString() : _secLeft.ToString();
+
+        if (_min > 0) return _min + " min " + _secLeftStr;
+        else return _secLeftStr + " sec";
     }
 }
