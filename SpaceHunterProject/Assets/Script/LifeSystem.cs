@@ -39,7 +39,6 @@ public class LifeSystem : MonoBehaviour
         if (currentLife == 0) 
         { 
 
-            Chrono.Instance.StartCoroutine(Chrono.Instance.End()); 
         }
         Debug.Log(OnDamageEvent);
         if (OnDamageEvent != null) { OnDamageEvent(); }

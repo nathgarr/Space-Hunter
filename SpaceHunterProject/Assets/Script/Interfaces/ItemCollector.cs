@@ -11,5 +11,6 @@ public class ItemCollector : MonoBehaviour
         if (!collectable.isCollectable) return;
 
         collectable.OnCollected(this.gameObject);
+        SoundController.instance.CollectingSound();
     }
 }

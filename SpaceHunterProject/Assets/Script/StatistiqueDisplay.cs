@@ -12,5 +12,7 @@ public class StatistiqueDisplay : MonoBehaviour
     {
         if (PersistentData.Instance == null) return;
         elapsedTime.text = PersistentData.Instance.time.ToString();
+        mineralCount.text = PersistentData.Instance.ToString();
+        monsterKilled.text = PersistentData.Instance.ToString();
     }
 }

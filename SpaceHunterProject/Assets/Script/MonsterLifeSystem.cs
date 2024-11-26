@@ -5,6 +5,7 @@ using TMPro;
 
 public class MonsterLifeSystem : MonoBehaviour , IMonster
 {
+    public static MonsterLifeSystem instance;
     [SerializeField]
     TextMeshProUGUI m_TextMeshPro;
     public GameObject MonsterHead;
@@ -12,6 +13,11 @@ public class MonsterLifeSystem : MonoBehaviour , IMonster
     public int monsterMaxLife = 1;
     public int monsterCurrentLife;
     public float monsterValue=1;
+
+   public void Awake()
+    {
+        instance = this;
+    }
 
     public bool IsMonster {  get { return true; } }
     public void Start()
@@ -28,6 +34,7 @@ public class MonsterLifeSystem : MonoBehaviour , IMonster
         if (monsterCurrentLife < monsterMaxLife)
         {
             Destroy(gameObject);
+            SoundController.instance.MonsterKillSound();
         }
         AddMonsterKill();
     }

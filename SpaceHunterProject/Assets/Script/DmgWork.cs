@@ -11,5 +11,6 @@ public class DmgWork : MonoBehaviour
         if (!lifeSystem.IsDamageable) return;
 
         lifeSystem.OnDmg(1);
+        SoundController.instance.GetDmgSound();
     }
 }

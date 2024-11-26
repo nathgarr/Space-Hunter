@@ -52,7 +52,6 @@ public class Chrono : MonoBehaviour
             onChronoOverDel();
         }
        yield return  new WaitForSeconds(3f);
-        SceneManager.LoadScene(2);
 
     }
     /// <summary>
